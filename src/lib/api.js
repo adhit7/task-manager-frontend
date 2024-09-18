@@ -8,7 +8,7 @@ const getToken = () => {
 };
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000',
+  baseURL: 'https://task-manager-pro.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
   },

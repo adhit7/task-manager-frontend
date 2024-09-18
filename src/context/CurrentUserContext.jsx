@@ -24,7 +24,8 @@ const CurrentUserProvider = ({ children }) => {
   };
 
   const googleLogin = async () => {
-    window.location.href = 'http://localhost:4000/user/google/auth';
+    window.location.href =
+      'https://task-manager-pro.up.railway.app/user/google/auth';
   };
 
   const updateTask = async (task) => {

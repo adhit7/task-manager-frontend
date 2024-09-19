@@ -111,7 +111,6 @@ const HomeScreen = () => {
 
   useEffect(() => {
     getAllTasks();
-    console.log('4455455454');
   }, [refresh]);
 
   const buttons = [

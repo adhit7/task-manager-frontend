@@ -50,19 +50,26 @@ const TaskModal = ({
   };
 
   const handleUpdate = async (formValues, resetForm) => {
-    const { title, description, status } = formValues;
-    const res = await updateTask({
-      ...editValues,
-      title: title,
-      description: description,
-      status: status,
-      _id: editValues._id,
-    });
-    if (res.data && res.status === 200) {
-      setEditValues(null);
-      resetForm();
-      closeDialog();
-      setRefresh((prev) => (prev += 1));
+    setLoading(true);
+    try {
+      const { title, description, status } = formValues;
+      const res = await updateTask({
+        ...editValues,
+        title: title,
+        description: description,
+        status: status,
+        _id: editValues._id,
+      });
+      if (res.data && res.status === 200) {
+        setEditValues(null);
+        resetForm();
+        closeDialog();
+        setRefresh((prev) => (prev += 1));
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -82,29 +82,27 @@ const HomeScreen = () => {
     try {
       const { data } = await api.get('/task/all');
 
-      if (data?.length > 0) {
-        setTaskList((prevTaskList) => {
-          // Create a map for easy access to tasks by status
-          const taskMap = data.reduce((acc, task) => {
-            if (!acc[task.status]) {
-              acc[task.status] = [];
-            }
-            acc[task.status].push(task);
-            return acc;
-          }, {});
+      setTaskList((prevTaskList) => {
+        // Create a map for easy access to tasks by status
+        const taskMap = data?.reduce((acc, task) => {
+          if (!acc[task.status]) {
+            acc[task.status] = [];
+          }
+          acc[task.status].push(task);
+          return acc;
+        }, {});
 
-          return prevTaskList.map((item) => {
-            const status = item.title; // The status of the column (e.g., 'Todo', 'In Progress', 'Completed')
-            const newItems = taskMap[status] || [];
+        return prevTaskList.map((item) => {
+          const status = item.title; // The status of the column (e.g., 'Todo', 'In Progress', 'Completed')
+          const newItems = taskMap[status] || [];
 
-            // Return a new object with the updated items list
-            return {
-              ...item,
-              items: newItems,
-            };
-          });
+          // Return a new object with the updated items list
+          return {
+            ...item,
+            items: newItems,
+          };
         });
-      }
+      });
     } catch (error) {
       const errorMessage = error.response?.data?.message || error?.message;
       console.log(errorMessage);
@@ -113,6 +111,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     getAllTasks();
+    console.log('4455455454');
   }, [refresh]);
 
   const buttons = [

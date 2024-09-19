@@ -16,8 +16,8 @@ const TaskModal = ({
   setEditValues,
   updateTask,
 }) => {
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   // Formik reference
   const formikRef = useRef();
 

@@ -107,7 +107,7 @@ const Signup = () => {
             </div>
             <Button
               label='Signup with Google'
-              loading={loading}
+              loading={false}
               message='Signing up'
               classes='max-w-fit'
               onClick={googleLogin}

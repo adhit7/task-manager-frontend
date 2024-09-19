@@ -12,7 +12,7 @@ const Button = ({
   loading = false,
   message = '',
   onClick,
-  classes,
+  classes = '',
   disabled,
 }) => {
   return (
@@ -20,8 +20,9 @@ const Button = ({
       className={`
         ${buttonClass}
         ${variant !== 'outlined' ? 'bg-blue-600' : 'border-blue-500'}
-        ${disabled ? '!pointer-events-none !bg-indigo-300' : ''}
+       
         ${classes}
+        
       `}
       type={type}
       onClick={onClick}
